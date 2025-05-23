@@ -77,15 +77,15 @@ class Blockchain:
 
         recalculated_merkle = MerkleTree.calculate_merkle_root([b.hash for b in self.chain])
         if recalculated_merkle != self.merkle_root:
-            print("❌ Merkle Root invalide")
+            print(" Merkle Root invalide")
 
         if invalid_blocks:
-            print(f"❌ {len(invalid_blocks)} problème(s) détecté(s) dans la chaîne:")
+            print(f" {len(invalid_blocks)} problème(s) détecté(s) dans la chaîne:")
             for idx, raison in invalid_blocks:
                 print(f"  - Bloc #{idx} : {raison}")
             return False
         else:
-            print("✅ Blockchain et Merkle Root valides.")
+            print(" Blockchain et Merkle Root valides.")
             return True
 
     def display(self):
@@ -100,7 +100,7 @@ def falsify_block(blockchain, indices_to_falsify):
 def run_verification(name, chain):
     print(f"\n🔍 Vérification de la {name}")
     valid = chain.is_chain_valid()
-    print("État :", "✅ Intègre" if valid else "❌ Compromise")
+    print("État :", " Intègre" if valid else " Compromise")
 
 if __name__ == "__main__":
     # Création des 9 blockchains
@@ -113,9 +113,9 @@ if __name__ == "__main__":
         blockchains.append(bc)
 
     # Affichage des 2 premières chaînes valides
-    print("\n📦 Chaîne 0 (intègre) :")
+    print("\n Chaîne 0 (intègre) :")
     blockchains[0].display()
-    print("\n📦 Chaîne 1 (intègre) :")
+    print("\n Chaîne 1 (intègre) :")
     blockchains[1].display()
 
     # Falsifications variées sur chaînes 2 à 8
